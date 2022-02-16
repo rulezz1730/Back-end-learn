@@ -1,0 +1,28 @@
+{
+    "name": "web-server",
+    "version": "1.0.0",
+    "description": "This is a first web-server",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "serve": "nodemon index.js"
+    },
+    "keywords": [
+        "node",
+        "node.js",
+        "javascript",
+        "js"
+    ],
+    "author": "Evgeny Alexeev <e.alexeev1705@gmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "ejs": "^3.1.6",
+        "express": "^4.17.2",
+        "yargs": "^17.3.1"
+    },
+    "devDependencies": {
+        "@types/yargs": "^17.0.8",
+        "nodemon": "^2.0.15"
+    }
+}
