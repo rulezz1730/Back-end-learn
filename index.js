@@ -7,8 +7,12 @@ const {
     removeNote,
     editNote,
 } = require("./notes.controller");
+const yargs = require("yargs");
+const pkg = require("./package.json");
 
 const port = 3000;
+yargs.version(pkg.version);
+
 //3000 - порт - можно выбрать в принципе любле число
 // const basePath = path.join(__dirname, "pages");
 const app = express();
@@ -21,9 +25,7 @@ app.use(
         extended: true,
     })
 );
-
 app.use(express.json());
-
 app.use(express.static(path.resolve(__dirname, "public")));
 
 app.get("/", async (request, response) => {
@@ -31,6 +33,7 @@ app.get("/", async (request, response) => {
         title: "Express App",
         notes: await getNotes(),
         created: false,
+        editing: false,
     });
 });
 
@@ -40,6 +43,7 @@ app.post("/", async (request, response) => {
         title: "Express App",
         notes: await getNotes(),
         created: true,
+        editing: false,
     });
 });
 
@@ -49,6 +53,7 @@ app.delete("/:id", async (request, response) => {
         title: "Express App",
         notes: await getNotes(),
         created: false,
+        editing: false,
     });
 });
 
@@ -59,10 +64,13 @@ app.put("/:id", async (request, response) => {
     response.render("index", {
         title: "Express App",
         notes: await getNotes(),
+        // editing: true,
         created: false,
     });
 });
 
-app.listen(port, () => {
-    console.log(chalk.green(`Server has been started on port ${port}!`));
-});
+if (process.argv.length === 2) {
+    app.listen(port, () => {
+        console.log(chalk.green(`Server has been started on port ${port}!`));
+    });
+}

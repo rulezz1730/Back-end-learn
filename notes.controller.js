@@ -14,7 +14,9 @@ async function addNote(title) {
     notes.push(note);
 
     await fs.writeFile(notesPath, JSON.stringify(notes));
-    console.log(chalk.bgBlue("New note was added"));
+    console.log(
+        chalk.whiteBright(`New note : ${JSON.stringify(note)} was added`)
+    );
 }
 
 async function getNotes() {
@@ -54,12 +56,6 @@ async function editNote(id, payload) {
         ...notes[indexEditingNote],
         title: payload,
     };
-
-    // console.log(chalk.yellowBright(JSON.stringify(notes)));
-
-    // console.log(
-    //     `Editing note: ${editNote}, index editing note: ${indexEditingNote}, newTitle: ${newTitle}`
-    // );
 
     await fs.writeFile(notesPath, JSON.stringify(notes));
 }

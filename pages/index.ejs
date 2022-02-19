@@ -30,18 +30,16 @@
         <div class="card">
             <ul class="list-group">  
                 <% for(let i = 0; i < notes.length; i++) { %>
-                    <li class="list-group-item d-flex align-items=center justify-content-between">
-                        <%= notes[i].title %>
-                        <div>
-                        <button class="btn btn-primary" data-type="edit" data-id="<%= notes[i].id%>">
-                            Редактировать
-                        </button>
-                        <button class="btn btn-danger" data-type="remove" data-id="<%= notes[i].id%>">
-                            &times;
-                        </button>
-                        </div>
-                       
-                        
+                    <li class="list-group-item align-items=center justify-content-between d-flex">
+                            <%= notes[i].title %>
+                            <div class="item-buttons">
+                                <button class="btn btn-primary" data-type="edit" data-id="<%= notes[i].id%>">
+                                    Редактировать
+                                </button>
+                                <button class="btn btn-danger" data-type="remove" data-id="<%= notes[i].id%>">
+                                    &times;
+                                </button>
+                            </div> 
                     </li>
                 <% } %>
             </ul>
